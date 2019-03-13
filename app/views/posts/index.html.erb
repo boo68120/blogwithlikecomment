@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Home', posts_path %> | <%= link_to 'New Post', new_post_path %>
+
+<% @posts.each do |post| %>
+    <h3><%= post.title %> </h3><p><b>User:</b><%= post.user.email %></p>
+    <p><%= post.body %></p>
+    <td>
+    <% if user_signed_in? %>
+    <%= link_to 'Read Post', post %>
+    <% else %>
+    <%= link_to 'Please sign in For read the post', new_user_session_path %>
+    <% end %>  
+    </td><hr>
+<% end %>
+    
+  

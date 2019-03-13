@@ -1,0 +1,17 @@
+<%= form_for([@post,@post.comments.build]) do |f| %>
+
+<p>
+<%= f.hidden_field :name, :value => current_user.username %>
+<%#= f.text_field :name %>
+</p>
+ <%= f.hidden_field :user_id, :value => current_user.id %>
+<p>
+<%= f.label :body %>
+<%= f.text_area :body %>
+</p>
+
+<p>
+<%= f.submit %>
+</p>
+
+<% end %>
