@@ -13,7 +13,9 @@
 	<p class="text-primary"><i class="fa fa-thumbs-o-up fa-3x"></i></p>
 </div>
 
-<span class="likes-count"><%= @post.get_upvotes.size %></span>
+<span class="likes-count" id="post-<%= @post.id %>">
+  <%= @post.get_upvotes.size %>
+</span>
 <% end %>
 </p>
 

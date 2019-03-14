@@ -1,8 +1,8 @@
 <% if current_user.liked? @post %>
 	$('.like-btn').addClass('liked');
 <% else %>
-	$('.like-btn').addClass('like-btn');
+	$('.like-btn').removeClass('liked');
 <% end %> 
-$(documnet).ready(function(){
-$('.like-count').json("<%= @post.get_upvotes.size %>");
-});
+$("#post-<%= @post.id %>").addClass("liked").html('<%= @post.get_upvotes.size %>');/*$(documnet).ready(function(){
+$('.like-count').html("<%= @post.get_upvotes.size %>");
+});*/
