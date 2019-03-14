@@ -10,7 +10,7 @@
   <%= @post.body %>
   <%= link_to like_post_path(@post), class:"like-btn", method: :put, remote: :true do %>
 <div>
-	<span><p class="text-primary">Likes</i></p></span>
+	<span><p class="text-primary"><i class="fa fa-thumbs-o-up fa-3x"></i></p></span>
 </div>
 
 <span class="likes-count"><%= @post.get_upvotes.size %></span>
