@@ -1,17 +1,19 @@
 <%= form_for([@post,@post.comments.build]) do |f| %>
 
 <p>
-<%= f.hidden_field :name, :value => current_user.username %>
+<%= f.hidden_field :name, :value => current_user.username, onchange: "javascript: myFunction(this.value)" %>
 <%#= f.text_field :name %>
 </p>
  <%= f.hidden_field :user_id, :value => current_user.id %>
+ <%= f.hidden_field :post_id, :value => @post.id %>
 <p>
 <%= f.label :body %>
 <%= f.text_area :body %>
 </p>
 
 <p>
-<%= f.submit %>
+<%#= f.submit %>
+<a onclick="test()">Save</a>
 </p>
 
 <% end %>

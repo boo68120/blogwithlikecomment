@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
   before_action :authenticate_user!, only: [:new, :vote], except: [:index, :show]
-  respond_to :js, :json, :html
+  respond_to :js, :json
  
   # GET /posts
   # GET /posts.json
@@ -17,10 +17,8 @@ class PostsController < ApplicationController
   def vote
     if !current_user.liked? @post
       @post.like_by current_user
-      render :show
     else current_user.liked? @post
     @post.unliked_by current_user
-    render :show
     end
   end
 
