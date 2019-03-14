@@ -5,10 +5,6 @@ Rails.application.routes.draw do
   		put "like" => "posts#vote"
   	end
   	resources :comments
-
   end
   root 'posts#index'
-
-  root to: 'home#index'
-  post 'addcomments' => "comments#create"
 end

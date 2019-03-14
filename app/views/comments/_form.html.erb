@@ -6,14 +6,14 @@
 </p>
  <%= f.hidden_field :user_id, :value => current_user.id %>
  <%= f.hidden_field :post_id, :value => @post.id %>
+ 
 <p>
 <%= f.label :body %>
 <%= f.text_area :body %>
 </p>
 
 <p>
-<%#= f.submit %>
-<a onclick="test()">Save</a>
+<%= f.submit "submit", :type => "button", :onclick => "test()"%>
 </p>
 
 <% end %>
