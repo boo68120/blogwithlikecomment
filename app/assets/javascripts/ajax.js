@@ -20,7 +20,11 @@ $.ajax({
          //},
        dataType: 'json',
        success: function(data){
-        $(".appendCmnt").append('<p>'+data.name+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data.body+'&nbsp;&nbsp;&nbsp;less than a minute&nbsp;&nbsp;&nbsp;<span>ago</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><hr>')
+        $(".appendCmnt").append('<p>'+data.name+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data.body+'&nbsp;&nbsp;&nbsp;less than a minute&nbsp;&nbsp;&nbsp;<span>ago</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" id="remCF">delete</a></td></tr></p><hr>')
+        $("#remCF").on('click',function(){
+            $(this).parent().remove();
+            $('hr:last').remove();
+        });
        },error: function(msg){
         console.log(msg,'error')
        }
