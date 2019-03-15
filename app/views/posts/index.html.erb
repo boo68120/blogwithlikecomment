@@ -2,8 +2,8 @@
 <div class="row">
 <div class=" col-md-8">
 <%= form_tag(posts_path, method: :get) do %>
-  Post <%= text_field_tag :title, params[:title] %>
-  <%= submit_tag 'Search', name: nil %>
+  Post <%= text_field_tag :title, params[:title], :key => "value", :onkeyup =>"myFunction(this.value)" %>
+  <%#= submit_tag 'Search', name: nil %>
 <% end %>
 </div>
 <div class=" col-md-4">
@@ -13,6 +13,7 @@
 </div>
 <% @posts.each do |post| %>
 <p id="notice"><%= notice %></p>
+<div id="search">
     <h3><%= post.title %> </h3><p><b>User:</b><%= post.user.email %></p>
     <p><%= post.body %></p>
     <td>
@@ -22,7 +23,9 @@
     <%= link_to 'Please sign in For read the post', new_user_session_path %>
     <% end %>  
     </td><hr>
+</div>
 <% end %>
+<div id="search1"></div>
 <div class= "pull-right">
     <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
