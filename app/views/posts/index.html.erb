@@ -1,7 +1,8 @@
-<p id="notice"><%= notice %></p>
+<div class= "pull-right">
 <%= link_to 'Home', posts_path %> | <%= link_to 'New Post', new_post_path %>
-
+</div>
 <% @posts.each do |post| %>
+<p id="notice"><%= notice %></p>
     <h3><%= post.title %> </h3><p><b>User:</b><%= post.user.email %></p>
     <p><%= post.body %></p>
     <td>
@@ -12,5 +13,7 @@
     <% end %>  
     </td><hr>
 <% end %>
-    
+<div class= "pull-right">
+    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>
   

@@ -27,7 +27,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 gem 'acts_as_votable'
 # gem 'redis', '~> 4.0'
+gem 'will_paginate'
 # Use ActiveModel has_secure_password
+gem 'will_paginate-bootstrap'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
