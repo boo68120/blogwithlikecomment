@@ -1,5 +1,15 @@
 <div class= "pull-right">
+<div class="row">
+<div class=" col-md-8">
+<%= form_tag(posts_path, method: :get) do %>
+  Post <%= text_field_tag :title, params[:title] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+</div>
+<div class=" col-md-4">
 <%= link_to 'Home', posts_path %> | <%= link_to 'New Post', new_post_path %>
+</div>
+</div>
 </div>
 <% @posts.each do |post| %>
 <p id="notice"><%= notice %></p>
