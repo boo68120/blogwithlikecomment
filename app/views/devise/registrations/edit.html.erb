@@ -15,7 +15,11 @@
             <div class="row">
               <div class="col-md-4 text-center">
                 <div id="img-preview-block" class="img-circle avatar avatar-original center-block">
-              </div>
+                <% if @user.image? %>
+                  <%= image_tag @user.image.url(:medium), width:"150px", height:"150px"%>
+                <% end %>
+                 <%= f.file_field :image, title: "" %>
+                  </div>
               </div>
               <div class="col-md-8">
                 <div class="form-group">
