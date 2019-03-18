@@ -1,7 +1,11 @@
 
-<p ><%= comment.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= comment.body %>&nbsp;&nbsp;&nbsp;<%= time_ago_in_words(comment.created_at) %>&nbsp;&nbsp;&nbsp;ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<p id ='delete<%= @post.id %>'><%= comment.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= comment.body %>&nbsp;&nbsp;&nbsp;<%= time_ago_in_words(comment.created_at) %>&nbsp;&nbsp;&nbsp;ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<% if user_signed_in? %>
-	<%= link_to 'delete', [comment.post,comment], method: :delete, data: { confirm: 'Are You sure Want To Delete'} %></p>
+	<%#= link_to 'delete', [comment.post,comment], method: :delete, remote: true %>
+    <a class="cid" onclick="del('<%= @post.id %>')" data-id="<%= comment.id %>">Delete</a>
+
+
+  </p>
 	<% end %>
 
 

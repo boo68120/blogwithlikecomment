@@ -19,14 +19,19 @@ $.ajax({
   }
 
 
-  function del(id){
+function del(id){
+    var cid = $('.cid').data("id");
+    //alert(cid);
+    //alert(id);
     if(confirm("Are You Sure?")){
     $.ajax({
         type: "DELETE",
-        url: "/posts/"+id+"/comments",
-        data: {delete_id:id},
+        url: "/posts/"+id+"/comments/"+cid,
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        data: {delete_id:cid},
         success: function(data){
            $('#delete'+id).hide();
+           $("#cmt-count-<%= @post.id %>").html('<%= @post.comments.count %>');
         }
     });
   }
