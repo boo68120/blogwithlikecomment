@@ -43,7 +43,10 @@ function del(id){
 
 
 function myFunction(value) {
-  if(value != ''){
+  if(value == ""){
+     location.reload();
+  }
+  else{
   $.ajax({
     type: "GET",
     url: "/posts",
@@ -60,6 +63,7 @@ function myFunction(value) {
         }
         else{
           $('#search').remove();
+           $('.pagination').remove();
           $("#search1").append('<h3>' + value[0].title + '</h3><p><b>User:</b>boo@spritle.com</p><p>' + value[0].body + '</p>')
         }
       });
