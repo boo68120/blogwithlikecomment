@@ -1,3 +1,15 @@
+<script>
+function sharePost(postid){
+  //alert(postid)
+  $("#share_post_id").val( postid );
+  $('#myModal').modal('show');
+  $('#myModal').on('shown.bs.modal', function() {
+    $('#myModal').find('.modal-body #share_post_id').val(postid);  
+ });
+}
+</script>
+
+
 <div class= "pull-right">
 <div class="row">
 <div class=" col-md-8">
@@ -11,18 +23,20 @@
 </div>
 </div>
 </div>
-<% @posts.each do |post| %>
 <p id="notice"><%= notice %></p>
+<% @posts.each do |post| %>
 <div id="search">
     <h3><%= post.title %> </h3><p><b>User:</b><%= post.user.email %></p>
     <p><%= post.body %></p>
-    <td>
     <% if user_signed_in? %>
-    <%= link_to 'Read Post', post %>
+    <%= link_to 'Read Post', post%> |
+     <span id="id-<%= post.id %>" onclick="sharePost('<%= post.id %>')">
+      <input type="hidden" class="post_id" id="post_id" name="post_id" value="<%= post.id %>">
+     <%= link_to 'Share Post', new_share_path, :remote => true, class: "share_modal", data: {toggle: "modal", target: "#modal"} %></span>
     <% else %>
-    <%= link_to 'Please sign in For read the post', new_user_session_path %>
+    <%= link_to 'Please sign in For read the post', new_user_session_path%>
     <% end %>  
-    </td><hr>
+    <hr>
 </div>
 <% end %>
 <div id="search1"></div>
@@ -30,3 +44,24 @@
     <%= will_paginate @posts, renderer: BootstrapPagination::Rails%>
 </div>
   
+ 
+
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body a-unique-class">
+           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
